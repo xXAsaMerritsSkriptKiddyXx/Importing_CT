@@ -7,6 +7,7 @@ except ModuleNotFoundError:
     print("Critical Failure!: \n Missing Critical Files!")
     time.sleep(1)
     print("Quitting...")
+    time.sleep(1)
     sys.exit()
 
 

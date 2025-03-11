@@ -1,5 +1,8 @@
 import random, sys, time, os 
 
+# Custom module importing
+from package import custom_quit_module as c
+
 # def funnyquit():
 #     print("\n Then..")
 #     time.sleep(1)
@@ -200,7 +203,7 @@ def main():
                  run = True
                  weapon_selection()
              elif res in han:
-                 funnyquit()
+                 c.funnyquit()
              else:
                  print("Please return a valid answer between Yes or No.")
                  firsttime = True
@@ -251,11 +254,11 @@ def trigger():
                         print(user.name + " have gone kablooey.\n ")
                         botscore += 1
                         scoreboardsave()
-                        realquit()
+                        c.realquit()
                     turnswap()
             #Only runs if you decide not to fire
             elif firc in han:
-                funnyquit()
+                c.funnyquit()
             else:
              print("Please return a valid response: \n")   
         else:
@@ -266,7 +269,7 @@ def trigger():
                      print(comp.bname + " forefits! \n")
                      playerscore += 1
                      scoreboardsave()
-                     realquit()
+                     c.realquit()
                  else:
                      if hitc <= selwep.liveR:
                          fireweapon() 
@@ -276,7 +279,7 @@ def trigger():
                              print(comp.bname + " has gone kablooey.\n ")
                              playerscore += 1
                              scoreboardsave()
-                             realquit()
+                             c.realquit()
                          turnswap()
 
 

@@ -1,6 +1,7 @@
+#Module importing
 import random, sys, time, os 
 
-# Custom module importing
+# Custom module importing with error handling
 try:
     from package import custom_quit_module as c
 except ModuleNotFoundError:
@@ -28,6 +29,10 @@ playerscore = 0
 botscore = 0
 run = False
 firsttime = True
+selwep = None
+hitc = 0
+sey = ["yes", "y"]
+han = ["no", "n"]
 
 # Blueprint for different weapons.
 class Weapon:
@@ -68,9 +73,6 @@ weapons.append(gau21int)
 # List for Weapon Options.
 # Combo of List and Dictionary gives optoins on which to refer to. 
 
-selwep = None
-hitc = 0
-
 class Player:
     def __init__(self,
         name = "You",
@@ -97,9 +99,6 @@ class Bot:
 # x and y are used to iterate between whose turn it is.
 
 comp = Bot()
-sey = ["yes", "y"]
-han = ["no", "n"]
-
 
 def fireweapon():
  shotsfired = 0

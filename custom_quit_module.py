@@ -1,3 +1,8 @@
+import random, sys, time, os 
+sey = ["yes", "y"]
+han = ["no", "n"]
+
+
 def funnyquit():
     print("\n Then..")
     time.sleep(1)
@@ -14,7 +19,7 @@ def endgamefilemanager():
  saveresponse = input("Y/N:")
  if saveresponse in sey:
      if os.path.exists("roulettesaves\\saves.txt"):
-           os.remove("roulettesaves\\saves.txt")
+         os.remove("roulettesaves\\saves.txt")
          print("Save removed!")
          time.sleep(1)
          print("Exiting program!")

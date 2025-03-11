@@ -1,4 +1,5 @@
 import random, sys, time, os 
+
 sey = ["yes", "y"]
 han = ["no", "n"]
 
@@ -36,12 +37,12 @@ def endgamefilemanager():
         time.sleep(1)
         endgamefilemanager()
         
-def realquit():
- quitresponse = input("Would you like to play again?: \n").strip().lower()
- if quitresponse in sey:
-        main()
- elif quitresponse in han:
-        endgamefilemanager()       
- else:
-        print("Invalid input")
-        realquit()
+# def realquit():
+#  quitresponse = input("Would you like to play again?: \n").strip().lower()
+#  if quitresponse in sey:
+#         main()
+#  elif quitresponse in han:
+#         endgamefilemanager()       
+#  else:
+#         print("Invalid input")
+#         realquit()

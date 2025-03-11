@@ -1,7 +1,14 @@
 import random, sys, time, os 
 
 # Custom module importing
-from package import custom_quit_module as c
+try:
+    from package import custom_quit_module as c
+except ModuleNotFoundError:
+    print("Critical Failure!: \n Missing Critical Files!")
+    time.sleep(1)
+    print("Quitting...")
+    sys.exit()
+
 
 # def funnyquit():
 #     print("\n Then..")
@@ -150,15 +157,15 @@ def turnswap():
 #             time.sleep(1)
 #             endgamefilemanager()
 
-# def realquit():
-#  quitresponse = input("Would you like to play again?: \n").strip().lower()
-#  if quitresponse in sey:
-#         main()
-#  elif quitresponse in han:
-#         endgamefilemanager()       
-#  else:
-#         print("Invalid input")
-#         realquit()
+def realquit():
+ quitresponse = input("Would you like to play again?: \n").strip().lower()
+ if quitresponse in sey:
+        main()
+ elif quitresponse in han:
+        c.endgamefilemanager()       
+ else:
+        print("Invalid input")
+        realquit()
 
 
 #File handling content
@@ -226,12 +233,12 @@ def weapon_selection():
          print("Please return an integer from the allowed list!")
 
 def starter():
-    que = input("Would you like to go first? \n").strip().lower()
-    if que in sey:
+    playorder = input("Would you like to go first? \n").strip().lower()
+    if playorder in sey:
      user.x = True
      comp.y = False
      trigger()
-    elif que in han:
+    elif playorder in han:
      comp.y = True
      user.x = False
      print("It is now " + comp. bname + "'s turn!")
@@ -242,19 +249,19 @@ def starter():
 #Roulette functions
 def trigger():
     global hitc, playerscore, botscore, selwep
-    sh = 0
-    while sh <= selwep.shells:
+    roundsfired = 0
+    while roundsfired <= selwep.shells:
         while user.x == True and comp.y == False:
             firc = input("Fire? \n Y/N:").lower().strip()
             if firc in sey:
                     fireweapon()
-                    sh += 1 
+                    roundsfired += 1 
                     #Only runs at end of game
                     if user.health <= 0:
                         print(user.name + " have gone kablooey.\n ")
                         botscore += 1
                         scoreboardsave()
-                        c.realquit()
+                        realquit()
                     turnswap()
             #Only runs if you decide not to fire
             elif firc in han:
@@ -269,17 +276,17 @@ def trigger():
                      print(comp.bname + " forefits! \n")
                      playerscore += 1
                      scoreboardsave()
-                     c.realquit()
+                     realquit()
                  else:
                      if hitc <= selwep.liveR:
                          fireweapon() 
-                         sh += 1
+                         roundsfired += 1
                          #Only runs at end of game
                          if comp.bhealth <= 0:
                              print(comp.bname + " has gone kablooey.\n ")
                              playerscore += 1
                              scoreboardsave()
-                             c.realquit()
+                             realquit()
                          turnswap()
 
 

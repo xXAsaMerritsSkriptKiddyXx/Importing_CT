@@ -4,12 +4,29 @@ import random, sys, time, os
 # Custom module importing with error handling
 try:
     from package import custom_quit_module as c
-except ModuleNotFoundError:
+except (ModuleNotFoundError, ImportError) as b:
     print("Critical Failure!: \n Missing Critical Files!")
     time.sleep(1)
     print("Quitting...")
     time.sleep(1)
     sys.exit()
+
+selfdestructtimer = 4
+
+try: 
+    from package.specific_var import schlorgus
+except (ModuleNotFoundError, ImportError) as e:
+    print("Missing Schlorgus!")
+    time.sleep(1)
+    print("Self destructing in")
+    while selfdestructtimer != 0:
+        print(selfdestructtimer-1 , "...")
+        selfdestructtimer -= 1
+        time.sleep(1)
+    if selfdestructtimer == 0:
+        sys.exit()
+
+
 
 
 # def funnyquit():
